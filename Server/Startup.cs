@@ -1,5 +1,7 @@
 using CarRentalApp.Server.Data;
+using CarRentalApp.Server.IRepository;
 using CarRentalApp.Server.Models;
+using CarRentalApp.Server.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,6 +43,7 @@ namespace CarRentalApp.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
